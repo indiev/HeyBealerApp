@@ -2,20 +2,27 @@ module.exports = {
   root: true,
   extends: [
     '@react-native-community',
+    'airbnb',
+    'airbnb/hooks',
     'plugin:@typescript-eslint/recommended',
-    // 'airbnb',
     'prettier',
+    'prettier/react',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
   ],
+  plugins: ['import', 'react', 'flowtype', '@typescript-eslint', 'prettier'],
   parser: '@typescript-eslint/parser',
-  plugins: ['import', 'prettier'],
   rules: {
     'no-shadow': 'off',
     'no-plusplus': 'off',
     'func-names': 'off',
-    'react-native/no-inline-styles': 'off',
-    'react/require-default-props': 'off',
+    'react/function-component-definition': [
+      'error',
+      {
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function',
+      },
+    ],
     'react/jsx-props-no-spreading': 'off',
     'react/jsx-one-expression-per-line': 'off',
     'react/jsx-filename-extension': [
@@ -31,6 +38,14 @@ module.exports = {
         reservedFirst: true,
       },
     ],
+    'react/require-default-props': 'off',
+    'react/style-prop-object': [
+      'error',
+      {
+        allow: ['StatusBar'],
+      },
+    ],
+    'react-native/no-inline-styles': 'off',
     '@typescript-eslint/ban-types': 'off',
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': 'error',
@@ -70,14 +85,12 @@ module.exports = {
     ],
   },
   settings: {
-    'import/extensions': ['.js', '.mjs', '.jsx', '.ts', '.tsx'],
     'import/resolver': {
-      'babel-module': {},
-      typescript: {
-        directory: './tsconfig.json',
-      },
-      node: {
+      'babel-module': {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        alias: {
+          '~': './src',
+        },
       },
     },
   },
