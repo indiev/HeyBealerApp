@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "EditorConfig.EditorConfig",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "visualstudioexptteam.vscodeintellicode",
+    "msjsdiag.vscode-react-native",
+    "naumovs.color-highlight",
+    "hookyqr.beautify",
+    "vscode-icons-team.vscode-icons"
+  ]
+}
