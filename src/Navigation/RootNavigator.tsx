@@ -5,7 +5,7 @@ import {
   NavigationContainer,
   NavigationContainerRef,
 } from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createStackNavigator} from '@react-navigation/stack';
 // import * as SplashScreen from 'expo-splash-screen';
 import React, {useEffect, useRef, useState} from 'react';
 import {Linking} from 'react-native';
@@ -17,7 +17,8 @@ import {useThemeContext} from '~/Context';
 import * as RootScreens from '~/Screens/Root';
 import {RootStackParamList} from '~/Types';
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+// const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createStackNavigator<RootStackParamList>();
 
 // const RootScreens = Object.entries(RootScreens);
 
@@ -42,7 +43,7 @@ export default (): React.ReactElement | null => {
   const [isReady, setIsReady] = useState(false);
   const [initialState, setInitialState] = useState<InitialState | undefined>();
   const navigationRef =
-    useRef<NavigationContainerRef<ReactNavigation.RootParamList>>(null);
+    useRef<NavigationContainerRef<RootStackParamList>>(null);
   const routeNameRef = useRef<string>();
 
   useEffect(() => {
