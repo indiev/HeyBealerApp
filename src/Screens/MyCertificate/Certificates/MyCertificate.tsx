@@ -1,13 +1,12 @@
 import {StackScreenProps} from '@react-navigation/stack';
 import React from 'react';
 
-import {QuestionMarkIcon} from '../../../Assets/Svg';
-import {MyCertificateParamList} from '../../../Types';
-
 import {CertificateItem} from './CertificateItem';
 import {CertificateListItemType} from './interface';
 
+import {QuestionMarkIcon} from '~/Assets/Svg';
 import {Icon, Text, View} from '~/Components';
+import {MyCertificateParamList} from '~/Types';
 
 const IssuedCertificateItems: CertificateListItemType[] = [
   {

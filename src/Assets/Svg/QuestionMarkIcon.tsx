@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Path} from 'react-native-svg';
 
-import {Svg} from '../../Components';
+import {Svg} from '~/Components';
 
 export default () => (
   <Svg height={24} width={24}>
