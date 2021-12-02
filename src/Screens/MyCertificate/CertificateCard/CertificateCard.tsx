@@ -95,7 +95,7 @@ export const CertificateCard = () => {
                 <ShieldIcon />
               </View>
               <LinearGradient
-                colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.6)']}
+                colors={['#007CAE', '#004381']}
                 end={{x: 0, y: 1}}
                 start={{x: 0, y: 0}}
                 style={{
