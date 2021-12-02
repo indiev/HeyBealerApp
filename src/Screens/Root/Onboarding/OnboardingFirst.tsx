@@ -1,10 +1,9 @@
 import {StackScreenProps} from '@react-navigation/stack';
 import React from 'react';
-import {Dimensions} from 'react-native';
+import {Dimensions, TouchableWithoutFeedback} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 
-import {OnboardingQR} from '../../../Assets/Svg';
-
+import {OnboardingQR} from '~/Assets/Svg';
 import {Button, Text, View} from '~/Components';
 import {RootStackParamList} from '~/Types';
 
@@ -48,28 +47,27 @@ export const OnboardingFirst = (props: Props) => {
 
   const renderCarousel = ({item, index}: any) => {
     return (
-      <View style={{flex: 5}}>
+      <View style={{flex: 6}}>
         <View
           style={{
-            flex: 3,
-            margin: 30,
+            flex: 5,
+            margin: 40,
             alignItems: 'center',
             justifyContent: 'center',
           }}
         >
           <OnboardingQR />
         </View>
-        <View
-          style={{
-            justifyContent: 'center',
-          }}
-          fill
-        >
-          <Text style={{textAlign: 'center', padding: 20}} large semiBold>
+        <View fill>
+          <Text style={{textAlign: 'center', padding: 10}} large semiBold>
             {item.title}
           </Text>
           <Text
-            style={{color: '#797979', textAlign: 'center', padding: 20}}
+            style={{
+              color: '#797979',
+              textAlign: 'center',
+              padding: 10,
+            }}
             small
           >
             {item.subtitle}
@@ -116,9 +114,53 @@ export const OnboardingFirst = (props: Props) => {
           inactiveDotOpacity={0.4}
           inactiveDotScale={1}
         />
-        <Text style={{textAlign: 'center'}} xxxSmall>
-          시작하기 버튼 클릭 시, 사용자 이용약관 및 개인정보 보호방침에
-          동의합니다.
+
+        <Text
+          style={{
+            textAlign: 'center',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: 20,
+            marginBottom: 5,
+          }}
+          xxxSmall
+        >
+          시작하기 버튼 클릭 시,{' '}
+          <TouchableWithoutFeedback
+            style={{
+              backgroundColor: 'yellow',
+            }}
+          >
+            <Text
+              style={{
+                color: '#003DAA',
+              }}
+              xxxSmall
+            >
+              사용자 이용약관{' '}
+            </Text>
+          </TouchableWithoutFeedback>
+          및{' '}
+          <TouchableWithoutFeedback
+            style={{
+              backgroundColor: 'yellow',
+              display: 'flex',
+            }}
+          >
+            <Text
+              style={{
+                color: '#003DAA',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: 0,
+                margin: 0,
+              }}
+              xxxSmall
+            >
+              개인정보 보호방침
+            </Text>
+          </TouchableWithoutFeedback>
+          에 동의합니다.
         </Text>
       </View>
       <View style={{padding: 20}}>
