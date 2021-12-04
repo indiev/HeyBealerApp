@@ -15,15 +15,15 @@ export enum MyCertificateStack {
 }
 
 export type RootStackParamList = {
-  [RootStack.Main]: undefined;
-  [RootStack.OnboardingFirst]: undefined;
+  // [RootStack.Main]: undefined;
+  // [RootStack.OnboardingFirst]: undefined;
 } & {
   [P in keyof typeof RootScreens]: undefined;
 };
 
 export type MyCertificateParamList = {
-  [MyCertificateStack.MyCertificate]: undefined;
-  [MyCertificateStack.CertificateCard]: undefined;
+  // [MyCertificateStack.MyCertificate]: undefined;
+  // [MyCertificateStack.CertificateCard]: undefined;
 } & {
   [P in keyof typeof MyCertificateScreens]: undefined;
 };
