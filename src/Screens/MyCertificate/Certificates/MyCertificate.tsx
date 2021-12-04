@@ -1,4 +1,3 @@
-import {StackScreenProps} from '@react-navigation/stack';
 import React from 'react';
 
 import {CertificateItem} from './CertificateItem';
@@ -6,7 +5,7 @@ import {CertificateListItemType} from './interface';
 
 import {QuestionMarkIcon} from '~/Assets/Svg';
 import {Icon, Text, View} from '~/Components';
-import {MyCertificateParamList} from '~/Types';
+import {MyCertificateStack, MyCertificateStackScreenProps} from '~/Types';
 
 const IssuedCertificateItems: CertificateListItemType[] = [
   {
@@ -35,13 +34,10 @@ const NotIssuedCertificateItems: CertificateListItemType[] = [
   },
 ];
 
-type NavigationProps = StackScreenProps<
-  MyCertificateParamList,
-  'MyCertificateScreen'
->;
-type Props = {} & NavigationProps;
+type Props =
+  MyCertificateStackScreenProps[MyCertificateStack.MyCertificate] & {};
 
-export const MyCertificateScreen = (props: Props) => {
+export const MyCertificate = (props: Props) => {
   return (
     <View fill safe>
       <View style={{paddingHorizontal: 20}} fill scroll>

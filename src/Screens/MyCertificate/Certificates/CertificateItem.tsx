@@ -1,4 +1,3 @@
-import {StackScreenProps} from '@react-navigation/stack';
 import {LinearGradient} from 'expo-linear-gradient';
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
@@ -11,7 +10,7 @@ import {
 
 import {RightArrowIcon} from '~/Assets/Svg';
 import {Text, View} from '~/Components';
-import {MyCertificateParamList} from '~/Types';
+import {MyCertificateStack, MyCertificateStackScreenProps} from '~/Types';
 
 const VerifiableCredentialInfoObj: {
   [key in VerifiableCredentialTypes]: CertificateItemType;
@@ -47,10 +46,9 @@ const VerifiableCredentialInfoObj: {
   },
 };
 
-type NavigationProps = StackScreenProps<
-  MyCertificateParamList,
-  'MyCertificateScreen'
->;
+type NavigationProps =
+  MyCertificateStackScreenProps[MyCertificateStack.MyCertificate];
+
 type Props = {
   item: CertificateListItemType;
 } & NavigationProps;
