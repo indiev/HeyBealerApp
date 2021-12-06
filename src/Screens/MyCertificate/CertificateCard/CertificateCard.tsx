@@ -3,6 +3,10 @@ import React from 'react';
 
 import {CoovLogo, KDCALogo, ShieldIcon} from '~/Assets/Svg';
 import {Text, View} from '~/Components';
+// import {MyCertificateStack, MyCertificateStackScreenProps} from '~/Types';
+
+// type NavigationProps =
+//   MyCertificateStackScreenProps[MyCertificateStack.CertificateCard];
 
 export const CertificateCard = () => {
   return (

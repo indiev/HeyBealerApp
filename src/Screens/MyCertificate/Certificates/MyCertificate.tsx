@@ -15,13 +15,15 @@ const IssuedCertificateItems: CertificateListItemType[] = [
   {
     type: 'PCR',
     status: '만료일 2021.11.19',
+    onPress: 'CertificateDetails',
   },
-  {type: 'Personal', status: '성인'},
+  {type: 'Personal', status: '성인', onPress: 'CertificateQR'},
 ];
 
 const NotIssuedCertificateItems: CertificateListItemType[] = [
   {
     type: 'Confirmation',
+    onPress: 'CertificateShareList',
   },
   {
     type: 'Recovery',
@@ -63,8 +65,8 @@ export const MyCertificate = (props: Props) => {
             row
           >
             <Icon name="refresh" size={18} isStroke />
-            <Text color="#B4B4B4" style={{marginLeft: 6}} xxSmall>
-              재발급
+            <Text color="#0036AF" style={{marginLeft: 6}} semiBold xxSmall>
+              최신 업데이트
             </Text>
           </View>
         </View>
@@ -100,9 +102,11 @@ export const MyCertificate = (props: Props) => {
             <Text bold>미발급된 증명서예요</Text>
             <QuestionMarkIcon />
           </View>
-          {NotIssuedCertificateItems.map(item => (
-            <CertificateItem {...props} item={item} />
-          ))}
+          <View style={{paddingBottom: 20}}>
+            {NotIssuedCertificateItems.map(item => (
+              <CertificateItem {...props} item={item} />
+            ))}
+          </View>
         </View>
       </View>
     </View>

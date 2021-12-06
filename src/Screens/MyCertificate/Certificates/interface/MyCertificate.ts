@@ -10,6 +10,7 @@ export type VerifiableCredentialTypes =
 export type CertificateListItemType = {
   type: VerifiableCredentialTypes;
   status?: string;
+  onPress?: any;
 };
 
 export type CertificateItemType = {

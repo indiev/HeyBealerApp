@@ -55,14 +55,21 @@ type Props = {
 
 export const CertificateItem = (props: Props) => {
   const {
-    item: {type, status},
+    item: {type, status, onPress},
     navigation,
   } = props;
   return (
     <TouchableOpacity
       key={type}
       activeOpacity={0.8}
+<<<<<<< Updated upstream
       onPress={() => navigation.push(MyCertificateStack.CertificateCard)}
+=======
+      onPress={() => {
+        if (onPress) navigation.push(onPress);
+        else navigation.push('CertificateCard');
+      }}
+>>>>>>> Stashed changes
     >
       <View
         style={{

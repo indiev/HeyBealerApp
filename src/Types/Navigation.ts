@@ -12,6 +12,9 @@ export enum RootStack {
 export enum MyCertificateStack {
   MyCertificate = 'MyCertificate',
   CertificateCard = 'CertificateCard',
+  CertificateDetails = 'CertificateDetails',
+  CertificateQR = 'CertificateQR',
+  CertificateShareList = 'CertificateShareList',
 }
 
 export type RootStackParamList = {
