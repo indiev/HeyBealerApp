@@ -62,14 +62,10 @@ export const CertificateItem = (props: Props) => {
     <TouchableOpacity
       key={type}
       activeOpacity={0.8}
-<<<<<<< Updated upstream
-      onPress={() => navigation.push(MyCertificateStack.CertificateCard)}
-=======
       onPress={() => {
         if (onPress) navigation.push(onPress);
-        else navigation.push('CertificateCard');
+        else navigation.push(MyCertificateStack.CertificateCard);
       }}
->>>>>>> Stashed changes
     >
       <View
         style={{
