@@ -7,10 +7,10 @@ import {
 } from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 // import * as SplashScreen from 'expo-splash-screen';
+import {createURL} from 'expo-linking';
 import React, {useEffect, useRef, useState} from 'react';
 import {Linking} from 'react-native';
 import '~/Navigation/GestureHandler';
-import {createURL} from 'expo-linking';
 
 // import {BackgroundLoader} from '~/Components';
 import {NAVIGATION_PERSISTENCE_KEY} from '~/Constants';
@@ -104,7 +104,7 @@ export default (): React.ReactElement | null => {
     >
       <Stack.Navigator
         initialRouteName={
-          RootScreens.OnboardingFirst.name as keyof typeof RootScreens
+          RootScreens.PinScreen.name as keyof typeof RootScreens
         }
         screenOptions={{headerShown: false}}
         // screenOptions={}
