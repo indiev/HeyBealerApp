@@ -1,1 +1,2 @@
-export * from './CertificateList';
+export * from './Certificates/MyCertificate';
+export * from './CertificateCard/CertificateCard';

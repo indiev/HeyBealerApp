@@ -10,6 +10,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import React, {useEffect, useRef, useState} from 'react';
 import {Linking} from 'react-native';
 import '~/Navigation/GestureHandler';
+import {createURL} from 'expo-linking';
 
 // import {BackgroundLoader} from '~/Components';
 import {NAVIGATION_PERSISTENCE_KEY} from '~/Constants';
@@ -68,13 +69,18 @@ export default (): React.ReactElement | null => {
     restoreState();
   }, []);
 
-  if (!isReady) return null;
+  if (!isReady) {
+    return null;
+  }
 
   return (
     <NavigationContainer
       ref={navigationRef}
       // fallback={BackgroundLoader}
       initialState={initialState}
+      linking={{
+        prefixes: [createURL('/')],
+      }}
       theme={theme}
       onReady={() => {
         routeNameRef.current = navigationRef.current?.getCurrentRoute()?.name;
@@ -106,7 +112,7 @@ export default (): React.ReactElement | null => {
         {Object.entries(RootScreens).map(([name, component]) => (
           <Stack.Screen
             key={name}
-            component={component}
+            getComponent={() => component}
             name={name as keyof typeof RootScreens}
           />
         ))}
