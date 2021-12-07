@@ -1,28 +1,42 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
 
+import {
+  MyCertificateStack,
+  MyCertificateStackScreenProps,
+} from '../../../Types';
+
 import {CertificateDetailItem} from './CertificateDetailItem';
 import {CertificateVaccinationItem} from './CertificateVaccinationItem';
 
 import {QRIcon} from '~/Assets/Svg';
 import {Header, Text, View} from '~/Components';
-// import {MyCertificateStack, MyCertificateStackScreenProps} from '~/Types';
 
-const vaccinationDataArr = ['1차접종', '2차접종', '추가접종'];
+const vaccinationDataArr = [
+  {
+    doseNum: 1,
+  },
+  {
+    doseNum: 2,
+  },
+  {
+    doseNum: 3,
+  },
+];
 
-const detailDataArr = ['1차 접종내역', '2차 접종내역'];
+type NavigationProps =
+  MyCertificateStackScreenProps[MyCertificateStack.CertificateDetails];
 
-// type Props =
-//   MyCertificateStackScreenProps[MyCertificateStack.CertificateDetails] & {};
-
-export const CertificateDetails = () => {
+export const CertificateDetails = ({navigation}: NavigationProps) => {
   return (
     <View fill safe>
       <Header
         right={
           <TouchableOpacity
             activeOpacity={0.8}
-            // onPress={() => console.log('QR Icon')}
+            onPress={() =>
+              navigation.push(MyCertificateStack.CertificateQR, {})
+            }
           >
             <QRIcon />
           </TouchableOpacity>
@@ -59,7 +73,7 @@ export const CertificateDetails = () => {
             </View>
             {vaccinationDataArr.map((item, index) => (
               <CertificateVaccinationItem
-                doseNum={item}
+                doseNum={item.doseNum}
                 end={index === vaccinationDataArr.length - 1}
                 start={index === 0}
               />
@@ -75,12 +89,11 @@ export const CertificateDetails = () => {
             borderRadius: 10,
           }}
         >
-          {detailDataArr.map((item, index) => (
+          {vaccinationDataArr.map((item, index) => (
             <CertificateDetailItem
-              end={index === detailDataArr.length - 1}
-              index={index}
+              end={index === vaccinationDataArr.length - 1}
+              item={item}
               start={index === 0}
-              title={item}
             />
           ))}
         </View>

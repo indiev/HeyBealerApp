@@ -1,10 +1,14 @@
 import React from 'react';
+import {ReactNativeModal as Modal} from 'react-native-modal';
 
 import {CertificateItem} from './CertificateItem';
-import {CertificateListItemType} from './interface';
+import {
+  CertificateListItemType,
+  VerifiableCredentialInfoObj,
+  VerifiableCredentialTypes,
+} from './interface';
 
-import {QuestionMarkIcon} from '~/Assets/Svg';
-import {Icon, Text, View} from '~/Components';
+import {Button, Icon, Text, View} from '~/Components';
 import {MyCertificateStack, MyCertificateStackScreenProps} from '~/Types';
 
 const IssuedCertificateItems: CertificateListItemType[] = [
@@ -12,18 +16,12 @@ const IssuedCertificateItems: CertificateListItemType[] = [
     type: 'Vaccine',
     status: '접종완료',
   },
-  {
-    type: 'PCR',
-    status: '만료일 2021.11.19',
-    onPress: 'CertificateDetails',
-  },
   {type: 'Personal', status: '성인', onPress: 'CertificateQR'},
 ];
 
 const NotIssuedCertificateItems: CertificateListItemType[] = [
   {
-    type: 'Confirmation',
-    onPress: 'CertificateShareList',
+    type: 'PCR',
   },
   {
     type: 'Recovery',
@@ -36,10 +34,14 @@ const NotIssuedCertificateItems: CertificateListItemType[] = [
   },
 ];
 
-type Props =
-  MyCertificateStackScreenProps[MyCertificateStack.MyCertificate] & {};
+type NavigationProps =
+  MyCertificateStackScreenProps[MyCertificateStack.MyCertificate];
 
-export const MyCertificate = (props: Props) => {
+export const MyCertificate = ({navigation}: NavigationProps) => {
+  const [notIssuedModalVisible, setNotIssuedModalVisible] = React.useState<
+    VerifiableCredentialTypes | undefined
+  >(undefined);
+
   return (
     <View fill safe>
       <View style={{paddingHorizontal: 20}} fill scroll>
@@ -52,20 +54,20 @@ export const MyCertificate = (props: Props) => {
           row
         >
           <Text large semiBold>
-            증명서
+            나의 증명서
           </Text>
           <View
             style={{
               backgroundColor: '#F3F3F3',
               alignItems: 'center',
-              paddingHorizontal: 13,
+              paddingHorizontal: 10,
               paddingVertical: 5,
               borderRadius: 15,
             }}
             row
           >
-            <Icon name="refresh" size={18} isStroke />
-            <Text color="#0036AF" style={{marginLeft: 6}} semiBold xxSmall>
+            <Icon name="refresh" size={24} isStroke />
+            <Text color="#797979" style={{marginLeft: 6}} semiBold xSmall>
               최신 업데이트
             </Text>
           </View>
@@ -73,42 +75,84 @@ export const MyCertificate = (props: Props) => {
         <View
           key={1}
           style={{
-            marginTop: 15,
-            paddingBottom: 30,
+            marginTop: 40,
+            paddingBottom: 21,
             backgroundColor: '#FAFAFA',
             paddingHorizontal: 14,
             borderRadius: 20,
             shadowOffset: {
-              width: 3,
-              height: 3,
+              width: 0,
+              height: 2,
             },
-            shadowColor: '#000000',
-            shadowOpacity: 0.2,
+            shadowRadius: 2,
+            shadowOpacity: 0.25,
           }}
         >
           {IssuedCertificateItems.map(item => (
-            <CertificateItem {...props} item={item} />
+            <CertificateItem item={item} navigation={navigation} />
           ))}
         </View>
         <View>
-          <View
-            style={{
-              marginTop: 30,
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}
-            row
-          >
-            <Text bold>미발급된 증명서예요</Text>
-            <QuestionMarkIcon />
-          </View>
-          <View style={{paddingBottom: 20}}>
+          <View style={{paddingBottom: 20, paddingHorizontal: 14}}>
             {NotIssuedCertificateItems.map(item => (
-              <CertificateItem {...props} item={item} />
+              <CertificateItem
+                item={item}
+                navigation={navigation}
+                onPress={setNotIssuedModalVisible}
+              />
             ))}
           </View>
         </View>
       </View>
+
+      <Modal
+        isVisible={!!notIssuedModalVisible}
+        style={{justifyContent: 'flex-end', margin: 0}}
+        onBackdropPress={() => setNotIssuedModalVisible(undefined)}
+      >
+        <View
+          style={{
+            backgroundColor: '#FFFFFF',
+            paddingVertical: 40,
+            paddingHorizontal: 20,
+            borderTopLeftRadius: 28,
+            borderTopRightRadius: 28,
+          }}
+        >
+          <Text bold large>
+            발급대상안내
+          </Text>
+          <Text style={{marginTop: 22}} bold>
+            {notIssuedModalVisible &&
+              VerifiableCredentialInfoObj[notIssuedModalVisible].name}
+          </Text>
+          <Text style={{marginTop: 20}} medium xSmall>
+            코로나19 유전자 진단검사(PCR) 결과 음성 판정을 받은 자
+          </Text>
+          <Text style={{marginTop: 10}}>
+            <Text color="#F2994A" bold xxSmall>
+              유효기간{' '}
+            </Text>
+            <Text color="#797979" bold xxSmall>
+              음성 결과 통보받은 시점으로부터 48시간이 되는 날의 자정까지 효력이
+              인정됩니다.
+            </Text>
+          </Text>
+          <Button
+            activeOpacity={0.8}
+            style={{
+              marginTop: 50,
+              backgroundColor: '#0036AF',
+              borderRadius: 10,
+            }}
+            onPress={() => setNotIssuedModalVisible(undefined)}
+          >
+            <Text color="#FFFFFF" small>
+              닫기
+            </Text>
+          </Button>
+        </View>
+      </Modal>
     </View>
   );
 };

@@ -26,7 +26,9 @@ export type RootStackParamList = {
 
 export type MyCertificateParamList = {
   // [MyCertificateStack.MyCertificate]: undefined;
-  // [MyCertificateStack.CertificateCard]: undefined;
+  [MyCertificateStack.CertificateCard]: {
+    type: string;
+  };
 } & {
   [P in keyof typeof MyCertificateScreens]: undefined;
 };

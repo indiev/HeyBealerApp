@@ -19,6 +19,7 @@ type Props = {
   children?: React.ReactNode;
   round?: boolean;
   highlight?: boolean;
+  activeOpacity?: number;
 };
 
 export default (props: Props): React.ReactElement => {
@@ -29,6 +30,7 @@ export default (props: Props): React.ReactElement => {
     style,
     onPress: onPressProp,
     children,
+    activeOpacity,
   } = props;
   const {theme} = useThemeContext();
   const TouchableComponent =
@@ -53,7 +55,11 @@ export default (props: Props): React.ReactElement => {
 
   return (
     <View style={containerStyle}>
-      <TouchableComponent style={{borderRadius}} onPress={onPress}>
+      <TouchableComponent
+        activeOpacity={activeOpacity}
+        style={{borderRadius}}
+        onPress={onPress}
+      >
         <View style={[customStyle, style]}>{children}</View>
       </TouchableComponent>
     </View>

@@ -4,19 +4,23 @@ import {TouchableOpacity} from 'react-native';
 import {Icon, Text, View} from '~/Components';
 
 type Props = {
-  title: string;
+  item: {
+    doseNum: number;
+  };
   start?: boolean;
   end?: boolean;
-  index: number;
 };
 
 export const CertificateDetailItem = (props: Props) => {
-  const {title, start, end, index} = props;
+  const {item, start, end} = props;
+  const {doseNum} = item;
+
+  const title = doseNum > 2 ? '추가 접종내역' : `${doseNum}차 접종내역`;
 
   return (
     <>
       <View
-        key={index}
+        key={item.doseNum}
         style={[
           {
             width: '100%',

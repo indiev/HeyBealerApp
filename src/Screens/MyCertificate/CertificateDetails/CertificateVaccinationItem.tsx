@@ -3,7 +3,7 @@ import React from 'react';
 import {Text, View} from '~/Components';
 
 type Props = {
-  doseNum: string;
+  doseNum: number;
   start: boolean;
   end: boolean;
 };
@@ -11,9 +11,12 @@ type Props = {
 export const CertificateVaccinationItem = (props: Props) => {
   const {doseNum, start, end} = props;
 
+  const title = doseNum > 2 ? '추가접종' : `${doseNum}차접종`;
+
   return (
     <>
       <View
+        key="doseNum"
         style={[
           {
             justifyContent: 'space-between',
@@ -32,7 +35,7 @@ export const CertificateVaccinationItem = (props: Props) => {
         row
       >
         <Text color="#58595B" medium xSmall>
-          {doseNum}
+          {title}
         </Text>
         <Text medium xSmall>
           접종완료

@@ -4,35 +4,18 @@ import QR from 'react-native-qrcode-svg';
 
 import {QuestionMarkIcon} from '~/Assets/Svg';
 import {Header, Icon, Text, View} from '~/Components';
+import Tag, {TagTypes} from '~/Components/Tag/Tag';
+import {MyCertificateStack, MyCertificateStackScreenProps} from '~/Types';
 
-type TagProps = {
-  name: string;
-};
+type NavigationProps =
+  MyCertificateStackScreenProps[MyCertificateStack.CertificateQR];
 
-const Tag = (props: TagProps) => {
-  const {name} = props;
+export const CertificateQR = ({navigation}: NavigationProps) => {
+  const tagStyle = {
+    marginHorizontal: 2.5,
+    marginBottom: 5,
+  };
 
-  return (
-    <View
-      style={{
-        paddingVertical: 2,
-        paddingHorizontal: 9,
-        backgroundColor: '#F7F7F7',
-        borderRadius: 2,
-        borderWidth: 0.7,
-        borderColor: '#D5D5D5',
-        marginHorizontal: 2.5,
-        marginBottom: 5,
-      }}
-    >
-      <Text color="#797979" medium xxSmall>
-        {name}
-      </Text>
-    </View>
-  );
-};
-
-export const CertificateQR = () => {
   return (
     <View fill>
       <Header
@@ -84,17 +67,17 @@ export const CertificateQR = () => {
           }}
         >
           <View style={{justifyContent: 'center'}} row>
-            <Tag name="백신" />
-            <Tag name="백신제조사" />
-            <Tag name="로트번호" />
+            <Tag style={tagStyle} text="백신" type={TagTypes.Info} />
+            <Tag style={tagStyle} text="백신제조사" type={TagTypes.Info} />
+            <Tag style={tagStyle} text="로트번호" type={TagTypes.Info} />
           </View>
           <View style={{justifyContent: 'center'}} row>
-            <Tag name="접종차수" />
-            <Tag name="접종일자" />
-            <Tag name="접종국가" />
+            <Tag style={tagStyle} text="접종차수" type={TagTypes.Info} />
+            <Tag style={tagStyle} text="접종일자" type={TagTypes.Info} />
+            <Tag style={tagStyle} text="접종국가" type={TagTypes.Info} />
           </View>
           <View style={{justifyContent: 'center'}} row>
-            <Tag name="접종기관" />
+            <Tag style={tagStyle} text="접종기관" type={TagTypes.Info} />
           </View>
         </View>
         <Text style={{marginTop: 20}} xSmall>
@@ -108,7 +91,9 @@ export const CertificateQR = () => {
             flex: 1,
             marginBottom: 10,
           }}
-          // onPress={() => console.log('List Icon')}
+          onPress={() =>
+            navigation.push(MyCertificateStack.CertificateShareList, {})
+          }
         >
           <Icon name="list" />
           <Text style={{marginTop: 4}} xxSmall>
