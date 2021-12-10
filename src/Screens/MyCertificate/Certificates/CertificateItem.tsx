@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import {LinearGradient} from 'expo-linear-gradient';
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
@@ -10,7 +11,7 @@ import {
 
 import {RightArrowIcon} from '~/Assets/Svg';
 import {Text, View} from '~/Components';
-import {MyCertificateStack, MyCertificateStackScreenProps} from '~/Types';
+import {MyCertificateStack, MyCertificateStackNavigationProps} from '~/Types';
 
 const VerifiableCredentialInfoObj: {
   [key in VerifiableCredentialTypes]: CertificateItemType;
@@ -46,23 +47,24 @@ const VerifiableCredentialInfoObj: {
   },
 };
 
-type NavigationProps =
-  MyCertificateStackScreenProps[MyCertificateStack.MyCertificate];
-
 type Props = {
   item: CertificateListItemType;
-} & NavigationProps;
+};
 
 export const CertificateItem = (props: Props) => {
   const {
     item: {type, status},
-    navigation,
   } = props;
+  const navigation =
+    useNavigation<
+      MyCertificateStackNavigationProps[MyCertificateStack.MyCertificate]
+    >();
+
   return (
     <TouchableOpacity
       key={type}
       activeOpacity={0.8}
-      onPress={() => navigation.push('CertificateCard')}
+      onPress={() => navigation.push(MyCertificateStack.CertificateCard)}
     >
       <View
         style={{

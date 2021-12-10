@@ -7,16 +7,16 @@ import {
 } from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 // import * as SplashScreen from 'expo-splash-screen';
+import {createURL} from 'expo-linking';
 import React, {useEffect, useRef, useState} from 'react';
 import {Linking} from 'react-native';
 import '~/Navigation/GestureHandler';
-import {createURL} from 'expo-linking';
 
 // import {BackgroundLoader} from '~/Components';
 import {NAVIGATION_PERSISTENCE_KEY} from '~/Constants';
 import {useThemeContext} from '~/Context';
 import * as RootScreens from '~/Screens/Root';
-import {RootStackParamList} from '~/Types';
+import {RootStack, RootStackParamList} from '~/Types';
 
 // const Stack = createNativeStackNavigator<RootStackParamList>();
 const Stack = createStackNavigator<RootStackParamList>();
@@ -103,9 +103,7 @@ export default (): React.ReactElement | null => {
       }}
     >
       <Stack.Navigator
-        initialRouteName={
-          RootScreens.OnboardingFirst.name as keyof typeof RootScreens
-        }
+        initialRouteName={RootStack.OnboardingFirst}
         screenOptions={{headerShown: false}}
         // screenOptions={}
       >
@@ -113,7 +111,7 @@ export default (): React.ReactElement | null => {
           <Stack.Screen
             key={name}
             getComponent={() => component}
-            name={name as keyof typeof RootScreens}
+            name={name as RootStack}
           />
         ))}
       </Stack.Navigator>

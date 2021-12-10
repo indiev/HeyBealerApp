@@ -1,19 +1,19 @@
-import {StackScreenProps} from '@react-navigation/stack';
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Dimensions, TouchableWithoutFeedback} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 
 import {OnboardingQR} from '~/Assets/Svg';
 import {Button, Text, View} from '~/Components';
-import {RootStackParamList} from '~/Types';
+import {RootStack, RootStackNavigationProps} from '~/Types';
 
 const {width: WIDTH, height: HEIGHT} = Dimensions.get('window');
 
-type NavigationProps = StackScreenProps<RootStackParamList, 'OnboardingFirst'>;
-type Props = {} & NavigationProps;
+type Props = {};
 
 export const OnboardingFirst = (props: Props) => {
-  const {navigation} = props;
+  const navigation =
+    useNavigation<RootStackNavigationProps[RootStack.OnboardingFirst]>();
 
   const data = [
     {
