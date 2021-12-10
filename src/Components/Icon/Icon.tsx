@@ -16,6 +16,13 @@ type Props = React.ComponentProps<typeof Svg> & {
   isStroke?: boolean;
 };
 
+type IconMapType = {
+  [key: string]: {
+    filled?: React.ReactNode;
+    outlined?: React.ReactNode;
+  };
+};
+
 export default (props: Props) => {
   const {
     name,
@@ -25,7 +32,8 @@ export default (props: Props) => {
     color = '#000000',
   } = props;
 
-  const icon = IconMap[name][shape] || IconMap[name].outlined;
+  const iconMap = IconMap as IconMapType;
+  const icon = iconMap[name][shape] || iconMap[name].outlined;
 
   return (
     <View
@@ -38,7 +46,6 @@ export default (props: Props) => {
     >
       <Svg
         style={{width: '100%', height: '100%'}}
-        viewBox="0 0 24 24"
         {...props}
         fill={!isStroke ? color : undefined}
         stroke={isStroke ? color : undefined}

@@ -21,7 +21,7 @@ export const colors = {
 };
 
 export const Light: ThemeColor = {
-  primary: '#5784FF',
+  primary: '#0036AF',
   background: colors.lightBackground,
   card: 'white',
   text: 'black',
@@ -45,8 +45,8 @@ export const Dark: ThemeColor = {
   notification: 'gray',
   disabledText: '#969696',
   tint: '#a3a3a3',
-  buttonPrimaryBackground: colors.skyBlue,
-  buttonPrimaryText: 'white',
+  buttonPrimaryBackground: '#0036AF',
+  buttonPrimaryText: '#FFFFFF',
   buttonLightBackground: colors.whiteGray,
   buttonLightText: 'black',
   disabledButton: 'rgb(224,224,224)',
