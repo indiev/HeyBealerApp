@@ -2,7 +2,6 @@ import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import QR from 'react-native-qrcode-svg';
 
-import {QuestionMarkIcon} from '~/Assets/Svg';
 import {Header, Icon, Text, View} from '~/Components';
 import Tag, {TagTypes} from '~/Components/Tag/Tag';
 import {MyCertificateStack, MyCertificateStackScreenProps} from '~/Types';
@@ -14,6 +13,7 @@ export const CertificateQR = ({navigation}: NavigationProps) => {
   const tagStyle = {
     marginHorizontal: 2.5,
     marginBottom: 5,
+    paddingHorizontal: 9,
   };
 
   return (
@@ -22,9 +22,13 @@ export const CertificateQR = ({navigation}: NavigationProps) => {
         right={
           <TouchableOpacity
             activeOpacity={0.8}
-            // onPress={() => console.log('Question Mark Icon')}
+            onPress={() =>
+              navigation.push(MyCertificateStack.CertificateDetails, {})
+            }
           >
-            <QuestionMarkIcon />
+            <Text color="#007AFF" medium xSmall>
+              상세보기
+            </Text>
           </TouchableOpacity>
         }
         title="증명서 QR코드"

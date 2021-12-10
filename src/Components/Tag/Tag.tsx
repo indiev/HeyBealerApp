@@ -44,7 +44,6 @@ export default (props: Props): React.ReactElement => {
       style={[
         {
           paddingVertical: 2,
-          paddingHorizontal: 9,
           borderRadius: 2,
           borderWidth: 0.7,
         },
@@ -52,7 +51,12 @@ export default (props: Props): React.ReactElement => {
         customStyle,
       ]}
     >
-      <Text color={tagTypeTextStyle[type]} medium xxSmall>
+      <Text
+        color={tagTypeTextStyle[type]}
+        style={{fontSize: 11, textAlign: 'center'}}
+        medium
+        xxSmall
+      >
         {text && text}
       </Text>
     </View>

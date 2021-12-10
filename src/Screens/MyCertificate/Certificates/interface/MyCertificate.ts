@@ -15,6 +15,7 @@ export type CertificateListItemType = {
 
 export type CertificateItemType = {
   color: string;
+  logoColor?: string;
   startColor?: string;
   endColor?: string;
   name: string;
@@ -29,6 +30,7 @@ export const VerifiableCredentialInfoObj: {
     color: '#0036AF',
     startColor: '#0036AF',
     endColor: '#011747',
+    logoColor: '#01389C',
   },
   Confirmation: {
     name: '코로나19 해외접종확인서',
@@ -58,5 +60,6 @@ export const VerifiableCredentialInfoObj: {
     color: '#B4B4B4',
     startColor: '#B4B4B4',
     endColor: '#494949',
+    logoColor: '#848484',
   },
 };
