@@ -1,4 +1,4 @@
-import {RouteProp} from '@react-navigation/native';
+import {CompositeNavigationProp, RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 
 export enum RootStack {
@@ -33,7 +33,10 @@ export type RootRouteProps = {
 };
 
 export type MyCertificateStackNavigationProps = {
-  [P in MyCertificateStack]: StackNavigationProp<MyCertificateParamList, P>;
+  [P in MyCertificateStack]: CompositeNavigationProp<
+    StackNavigationProp<MyCertificateParamList, P>,
+    StackNavigationProp<RootStackParamList>
+  >;
 };
 
 export type MyCertificateRouteProps = {
