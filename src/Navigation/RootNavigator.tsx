@@ -7,6 +7,7 @@ import {
 } from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 // import * as SplashScreen from 'expo-splash-screen';
+import {createURL} from 'expo-linking';
 import React, {useEffect, useRef, useState} from 'react';
 import {Linking} from 'react-native';
 import '~/Navigation/GestureHandler';
@@ -15,7 +16,7 @@ import '~/Navigation/GestureHandler';
 import {NAVIGATION_PERSISTENCE_KEY} from '~/Constants';
 import {useThemeContext} from '~/Context';
 import * as RootScreens from '~/Screens/Root';
-import {RootStackParamList} from '~/Types';
+import {RootStack, RootStackParamList} from '~/Types';
 
 // const Stack = createNativeStackNavigator<RootStackParamList>();
 const Stack = createStackNavigator<RootStackParamList>();
@@ -68,13 +69,18 @@ export default (): React.ReactElement | null => {
     restoreState();
   }, []);
 
-  if (!isReady) return null;
+  if (!isReady) {
+    return null;
+  }
 
   return (
     <NavigationContainer
       ref={navigationRef}
       // fallback={BackgroundLoader}
       initialState={initialState}
+      linking={{
+        prefixes: [createURL('/')],
+      }}
       theme={theme}
       onReady={() => {
         routeNameRef.current = navigationRef.current?.getCurrentRoute()?.name;
@@ -97,17 +103,15 @@ export default (): React.ReactElement | null => {
       }}
     >
       <Stack.Navigator
-        initialRouteName={
-          RootScreens.OnboardingFirst.name as keyof typeof RootScreens
-        }
+        initialRouteName={RootStack.OnboardingFirst}
         screenOptions={{headerShown: false}}
         // screenOptions={}
       >
         {Object.entries(RootScreens).map(([name, component]) => (
           <Stack.Screen
             key={name}
-            component={component}
-            name={name as keyof typeof RootScreens}
+            getComponent={() => component}
+            name={name as RootStack}
           />
         ))}
       </Stack.Navigator>

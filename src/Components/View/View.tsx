@@ -1,4 +1,5 @@
-import React from 'react';
+import {useScrollToTop} from '@react-navigation/native';
+import React, {RefObject} from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -45,6 +46,12 @@ export default (props: Props): React.ReactElement => {
 
   const Component = (safe && SafeAreaView) || (scroll && ScrollView) || View;
 
+  const ref = React.useRef<SafeAreaView | ScrollView | View>(null);
+
+  if (typeof Component === typeof ScrollView) {
+    useScrollToTop(ref as RefObject<ScrollView>);
+  }
+
   const componentProps: Props = {
     style: [style, customStyle],
     children,
@@ -67,7 +74,7 @@ export default (props: Props): React.ReactElement => {
   };
 
   return !keyboardAvoiding ? (
-    <Component {...componentProps} />
+    <Component ref={ref} {...componentProps} />
   ) : (
     <KeyboardAvoidingView {...componentProps} />
   );

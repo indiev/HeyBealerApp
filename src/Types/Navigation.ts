@@ -1,21 +1,41 @@
-import {NavigatorScreenParams, RouteProp} from '@react-navigation/native';
+import {RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 
-// import {RootStack} from '~/Constants';
-import * as RootScreens from '~/Screens/Root';
+export enum RootStack {
+  Main = 'Main',
+  OnboardingFirst = 'OnboardingFirst',
+}
 
-// const RootStack: {[P in keyof typeof RootScreens]: string} = {
-//   OnboardingFirst: RootScreens.OnboardingFirst.name,
-// };
+export enum MyCertificateStack {
+  MyCertificate = 'MyCertificate',
+  CertificateCard = 'CertificateCard',
+}
 
-export type RootStackParamList = {} & {
-  [P in keyof typeof RootScreens]: undefined;
+export type RootStackParamList = {
+  // [RootStack.Main]: undefined;
+} & {
+  [P in RootStack]?: {};
 };
 
-export type RootStackNavigationProp<T extends keyof RootStackParamList> =
-  StackNavigationProp<RootStackParamList, T>;
+export type MyCertificateParamList = {
+  [MyCertificateStack.MyCertificate]: undefined;
+  [MyCertificateStack.CertificateCard]: undefined;
+} & {
+  [P in MyCertificateStack]?: {};
+};
 
-export type RootStackRouteProp<T extends keyof RootStackParamList> = RouteProp<
-  RootStackParamList,
-  T
->;
+export type RootStackNavigationProps = {
+  [P in RootStack]: StackNavigationProp<RootStackParamList, P>;
+};
+
+export type RootRouteProps = {
+  [P in RootStack]: RouteProp<RootStackParamList, P>;
+};
+
+export type MyCertificateStackNavigationProps = {
+  [P in MyCertificateStack]: StackNavigationProp<MyCertificateParamList, P>;
+};
+
+export type MyCertificateRouteProps = {
+  [P in MyCertificateStack]: RouteProp<MyCertificateParamList, P>;
+};
