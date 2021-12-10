@@ -164,11 +164,8 @@ export const OnboardingFirst = (props: Props) => {
         </Text>
       </View>
       <View style={{padding: 20}}>
-        <Button
-          style={{backgroundColor: '#0036AF'}}
-          onPress={() => navigation.navigate('Main')}
-        >
-          <Text style={{color: 'white'}}>시작하기</Text>
+        <Button onPress={() => navigation.navigate(RootStack.Main)}>
+          시작하기
         </Button>
       </View>
     </View>
