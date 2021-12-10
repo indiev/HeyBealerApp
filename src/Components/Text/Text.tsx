@@ -20,6 +20,7 @@ export enum FontWeight {
 }
 
 export enum FontSize {
+  xxxSmall = 'xxx-small',
   xxSmall = 'xx-small',
   xSmall = 'x-small',
   Small = 'small',
@@ -32,6 +33,11 @@ export enum FontSize {
 }
 
 const Size = {
+  [FontSize.xxxSmall]: {
+    fontSize: 10,
+    lineHeight: 10 * 1.66,
+    letterSpacing: 0.4,
+  },
   [FontSize.xxSmall]: {
     fontSize: 12,
     lineHeight: 12 * 1.66, // 2.66(overline)
@@ -93,6 +99,7 @@ type Props = TextProps & {
   extraBold?: boolean;
   black?: boolean;
   // size
+  xxxSmall?: boolean;
   xxSmall?: boolean;
   xSmall?: boolean;
   small?: boolean;
@@ -120,6 +127,7 @@ export default (props: Props): React.ReactElement => {
     extraBold,
     black,
     size,
+    xxxSmall,
     xxSmall,
     xSmall,
     small,
@@ -149,6 +157,7 @@ export default (props: Props): React.ReactElement => {
   const fontSize =
     Size[
       size ||
+        (xxxSmall && FontSize.xxxSmall) ||
         (xxSmall && FontSize.xxSmall) ||
         (xSmall && FontSize.xSmall) ||
         (small && FontSize.Small) ||
