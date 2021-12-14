@@ -1,7 +1,7 @@
 import {StackNavigationProp} from '@react-navigation/stack';
 import {LinearGradient} from 'expo-linear-gradient';
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 
 import {
   CertificateListItemType,
@@ -48,7 +48,7 @@ export const CertificateItem = ({
         }}
         row
       >
-        <View style={{width: 70, paddingHorizontal: 18}}>
+        <View style={{width: 70, paddingHorizontal: 20}}>
           <View
             style={{
               backgroundColor:
@@ -68,12 +68,12 @@ export const CertificateItem = ({
               colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.6)']}
               end={{x: 0, y: 1}}
               start={{x: 0, y: 0}}
-              style={{
-                width: '100%',
-                height: '100%',
-                position: 'absolute',
-                zIndex: -2,
-              }}
+              style={[
+                StyleSheet.absoluteFill,
+                {
+                  zIndex: -2,
+                },
+              ]}
             />
           </View>
           <View

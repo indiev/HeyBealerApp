@@ -155,11 +155,7 @@ const IconMap: IconMapType = {
         </G>
         <Defs>
           <ClipPath id="a">
-            <Path
-              d="M0 0h14v16.576H0z"
-              fill="#fff"
-              transform="translate(5 4)"
-            />
+            <Path d="M0 0h18v21.576H0z" fill="#fff" />
           </ClipPath>
         </Defs>
       </>

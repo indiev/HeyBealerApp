@@ -73,7 +73,6 @@ export const MyCertificate = ({navigation}: NavigationProps) => {
           </View>
         </View>
         <View
-          key={1}
           style={{
             marginTop: 40,
             paddingBottom: 21,
@@ -92,16 +91,14 @@ export const MyCertificate = ({navigation}: NavigationProps) => {
             <CertificateItem item={item} navigation={navigation} />
           ))}
         </View>
-        <View>
-          <View style={{paddingBottom: 20, paddingHorizontal: 14}}>
-            {NotIssuedCertificateItems.map(item => (
-              <CertificateItem
-                item={item}
-                navigation={navigation}
-                onPress={setNotIssuedModalVisible}
-              />
-            ))}
-          </View>
+        <View style={{paddingBottom: 20, paddingHorizontal: 14}}>
+          {NotIssuedCertificateItems.map(item => (
+            <CertificateItem
+              item={item}
+              navigation={navigation}
+              onPress={setNotIssuedModalVisible}
+            />
+          ))}
         </View>
       </View>
 
@@ -122,7 +119,7 @@ export const MyCertificate = ({navigation}: NavigationProps) => {
           <Text bold large>
             발급대상안내
           </Text>
-          <Text style={{marginTop: 22}} bold>
+          <Text style={{marginTop: 20}} bold>
             {notIssuedModalVisible &&
               VerifiableCredentialInfoObj[notIssuedModalVisible].name}
           </Text>

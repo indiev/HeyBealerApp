@@ -1,17 +1,19 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
+import {Dimensions, TouchableOpacity} from 'react-native';
 import QR from 'react-native-qrcode-svg';
 
 import {Header, Icon, Text, View} from '~/Components';
 import Tag, {TagTypes} from '~/Components/Tag/Tag';
 import {MyCertificateStack, MyCertificateStackScreenProps} from '~/Types';
 
+const {width: WIDTH} = Dimensions.get('window');
+
 type NavigationProps =
   MyCertificateStackScreenProps[MyCertificateStack.CertificateQR];
 
 export const CertificateQR = ({navigation}: NavigationProps) => {
   const tagStyle = {
-    marginHorizontal: 2.5,
+    marginHorizontal: 3,
     marginBottom: 5,
     paddingHorizontal: 9,
   };
@@ -35,7 +37,7 @@ export const CertificateQR = ({navigation}: NavigationProps) => {
         back
       />
       <View style={{alignItems: 'center'}} fill>
-        <Text style={{marginTop: 76, textAlign: 'center'}} xxSmall>
+        <Text style={{marginTop: '20%'}} xxSmall>
           남은 시간
           <Text color="#FF0000" xxSmall>
             {' '}
@@ -48,7 +50,7 @@ export const CertificateQR = ({navigation}: NavigationProps) => {
             borderColor: '#007CAE',
             borderRadius: 30,
             marginTop: 14,
-            padding: 28,
+            padding: 30,
             backgroundColor: '#FFFFFF',
             shadowOffset: {
               width: 0,
@@ -59,7 +61,7 @@ export const CertificateQR = ({navigation}: NavigationProps) => {
             shadowOpacity: 1,
           }}
         >
-          <QR size={150} value="Hello My name is Peter Son." />
+          <QR size={WIDTH * 0.4} value="Hello My name is Peter Son." />
         </View>
         <Text style={{marginTop: 16}} xSmall>
           필수 제출 정보
@@ -87,23 +89,20 @@ export const CertificateQR = ({navigation}: NavigationProps) => {
         <Text style={{marginTop: 20}} xSmall>
           추가 제출 정보
         </Text>
-        <TouchableOpacity
-          activeOpacity={0.8}
-          style={{
-            justifyContent: 'flex-end',
-            alignItems: 'center',
-            flex: 1,
-            marginBottom: 10,
-          }}
-          onPress={() =>
-            navigation.push(MyCertificateStack.CertificateShareList, {})
-          }
-        >
-          <Icon name="list" />
-          <Text style={{marginTop: 4}} xxSmall>
-            정보 제공 설정
-          </Text>
-        </TouchableOpacity>
+        <View style={{flex: 1, justifyContent: 'flex-end', marginBottom: 10}}>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={{alignItems: 'center'}}
+            onPress={() =>
+              navigation.push(MyCertificateStack.CertificateShareList, {})
+            }
+          >
+            <Icon name="list" />
+            <Text style={{marginTop: 4}} xxSmall>
+              정보 제공 설정
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );

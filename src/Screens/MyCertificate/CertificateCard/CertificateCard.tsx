@@ -1,6 +1,6 @@
 import {LinearGradient} from 'expo-linear-gradient';
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 
 import {TagTypes} from '../../../Components/Tag/Tag';
 import {VerifiableCredentialInfoObj} from '../Certificates/interface';
@@ -29,7 +29,7 @@ export const CertificateCard = ({navigation, route}: NavigationProps) => {
         <TouchableOpacity
           activeOpacity={0.8}
           style={{
-            width: '74%',
+            flex: 0.8,
             aspectRatio: 0.55,
             borderRadius: 16,
             shadowOffset: {
@@ -49,29 +49,29 @@ export const CertificateCard = ({navigation, route}: NavigationProps) => {
               borderTopLeftRadius: 16,
               borderTopRightRadius: 16,
               overflow: 'hidden',
+              justifyContent: 'flex-end',
             }}
           >
-            <View
-              style={{
-                paddingLeft: 25,
-                paddingBottom: 25,
-                justifyContent: 'flex-end',
-              }}
-              fill
+            <Text
+              color="#FFFFFF"
+              style={{marginBottom: 10, marginLeft: 25}}
+              large
+              semiBold
             >
-              <Text color="#FFFFFF" large semiBold>
-                {name || '코로나19\n예방접종확인서'}
+              {name || '코로나19\n예방접종확인서'}
+            </Text>
+            <View
+              style={{alignItems: 'center', marginBottom: 25, marginLeft: 25}}
+              row
+            >
+              <Icon name="kdca" />
+              <Text color="#FFFFFF" style={{marginLeft: 5}} semiBold xxSmall>
+                질병관리청
               </Text>
-              <View style={{alignItems: 'center', marginTop: 10}} row>
-                <Icon name="kdca" />
-                <Text color="#FFFFFF" style={{marginLeft: 5}} semiBold xxSmall>
-                  질병관리청
-                </Text>
-              </View>
             </View>
             <View
               style={{
-                top: 29,
+                top: 30,
                 position: 'absolute',
                 zIndex: -1,
               }}
@@ -82,7 +82,6 @@ export const CertificateCard = ({navigation, route}: NavigationProps) => {
               style={{
                 right: 25,
                 top: 25,
-                alignItems: 'flex-end',
                 position: 'absolute',
                 zIndex: -1,
               }}
@@ -93,12 +92,12 @@ export const CertificateCard = ({navigation, route}: NavigationProps) => {
               colors={[startColor || '#0036AF', endColor || '#000000']}
               end={{x: 0, y: 1}}
               start={{x: 0, y: 0}}
-              style={{
-                width: '100%',
-                height: '100%',
-                position: 'absolute',
-                zIndex: -2,
-              }}
+              style={[
+                StyleSheet.absoluteFill,
+                {
+                  zIndex: -2,
+                },
+              ]}
             />
           </View>
           <View
@@ -107,12 +106,11 @@ export const CertificateCard = ({navigation, route}: NavigationProps) => {
               backgroundColor: '#FFFFFF',
               borderBottomLeftRadius: 16,
               borderBottomRightRadius: 16,
-              paddingTop: 7.5,
-              justifyContent: 'space-between',
+              paddingTop: 7,
             }}
             row
           >
-            <View style={{flex: 0.5, paddingLeft: 25}}>
+            <View style={{paddingLeft: 25}} fill>
               <Text color="#797979" xxSmall>
                 접종차수
               </Text>
@@ -128,19 +126,15 @@ export const CertificateCard = ({navigation, route}: NavigationProps) => {
                 type={TagTypes.Success}
               />
             </View>
-            <View style={{flex: 0.5, paddingLeft: 25}}>
-              <View>
-                <Text color="#797979" xxSmall>
-                  백신제조사
-                </Text>
-                <Text xxSmall>화이자</Text>
-              </View>
-              <View style={{marginTop: 5}}>
-                <Text color="#797979" xxSmall>
-                  접종일자
-                </Text>
-                <Text xxSmall>2021.05.25</Text>
-              </View>
+            <View style={{paddingLeft: 25}} fill>
+              <Text color="#797979" xxSmall>
+                백신제조사
+              </Text>
+              <Text xxSmall>화이자</Text>
+              <Text color="#797979" style={{marginTop: 5}} xxSmall>
+                접종일자
+              </Text>
+              <Text xxSmall>2021.05.25</Text>
             </View>
           </View>
         </TouchableOpacity>

@@ -11,7 +11,7 @@ export enum TagTypes {
 
 type Props = {
   text: string;
-  type: TagTypes;
+  type?: TagTypes;
   style?: ViewStyle;
 };
 
@@ -37,7 +37,7 @@ const tagTypeTextStyle: {[key in TagTypes]: string} = {
 };
 
 export default (props: Props): React.ReactElement => {
-  const {text, type, style: customStyle} = props;
+  const {text, type = TagTypes.Success, style: customStyle} = props;
 
   return (
     <View
