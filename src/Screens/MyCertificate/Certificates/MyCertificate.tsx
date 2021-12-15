@@ -5,7 +5,6 @@ import {CertificateListItemType} from './interface';
 
 import {QuestionMarkIcon} from '~/Assets/Svg';
 import {Icon, Text, View} from '~/Components';
-import {MyCertificateStack, MyCertificateStackScreenProps} from '~/Types';
 
 const IssuedCertificateItems: CertificateListItemType[] = [
   {
@@ -34,8 +33,7 @@ const NotIssuedCertificateItems: CertificateListItemType[] = [
   },
 ];
 
-type Props =
-  MyCertificateStackScreenProps[MyCertificateStack.MyCertificate] & {};
+type Props = {};
 
 export const MyCertificate = (props: Props) => {
   return (

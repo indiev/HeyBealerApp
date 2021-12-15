@@ -16,7 +16,7 @@ import '~/Navigation/GestureHandler';
 import {NAVIGATION_PERSISTENCE_KEY} from '~/Constants';
 import {useThemeContext} from '~/Context';
 import * as RootScreens from '~/Screens/Root';
-import {RootStackParamList} from '~/Types';
+import {RootStack, RootStackParamList} from '~/Types';
 
 // const Stack = createNativeStackNavigator<RootStackParamList>();
 const Stack = createStackNavigator<RootStackParamList>();
@@ -103,9 +103,7 @@ export default (): React.ReactElement | null => {
       }}
     >
       <Stack.Navigator
-        initialRouteName={
-          RootScreens.PinScreen.name as keyof typeof RootScreens
-        }
+        initialRouteName={RootStack.OnboardingFirst}
         screenOptions={{headerShown: false}}
         // screenOptions={}
       >
@@ -113,7 +111,7 @@ export default (): React.ReactElement | null => {
           <Stack.Screen
             key={name}
             getComponent={() => component}
-            name={name as keyof typeof RootScreens}
+            name={name as RootStack}
           />
         ))}
       </Stack.Navigator>
