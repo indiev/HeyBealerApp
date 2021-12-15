@@ -4,6 +4,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 export enum RootStack {
   Main = 'Main',
   OnboardingFirst = 'OnboardingFirst',
+  PinScreen = 'PinScreen',
 }
 
 export enum MyCertificateStack {

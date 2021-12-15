@@ -51,7 +51,6 @@ export const OnboardingFirst = (props: Props) => {
         <View
           style={{
             flex: 5,
-            margin: 40,
             alignItems: 'center',
             justifyContent: 'center',
           }}
@@ -126,11 +125,7 @@ export const OnboardingFirst = (props: Props) => {
           xxxSmall
         >
           시작하기 버튼 클릭 시,{' '}
-          <TouchableWithoutFeedback
-            style={{
-              backgroundColor: 'yellow',
-            }}
-          >
+          <TouchableWithoutFeedback>
             <Text
               style={{
                 color: '#003DAA',
@@ -141,19 +136,10 @@ export const OnboardingFirst = (props: Props) => {
             </Text>
           </TouchableWithoutFeedback>
           및{' '}
-          <TouchableWithoutFeedback
-            style={{
-              backgroundColor: 'yellow',
-              display: 'flex',
-            }}
-          >
+          <TouchableWithoutFeedback>
             <Text
               style={{
                 color: '#003DAA',
-                justifyContent: 'center',
-                alignItems: 'center',
-                padding: 0,
-                margin: 0,
               }}
               xxxSmall
             >
