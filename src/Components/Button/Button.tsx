@@ -8,9 +8,13 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import {Light} from '../../Constants';
+import {Text} from '../Text';
 import {View} from '../View';
 
 import {useThemeContext} from '~/Context';
+
+type ButtonType = 'primary' | 'secondary' | 'disabled';
 
 type Props = {
   containerStyle?: StyleProp<ViewStyle>;
@@ -20,6 +24,9 @@ type Props = {
   round?: boolean;
   highlight?: boolean;
   activeOpacity?: number;
+  radius?: number;
+  disabled?: boolean;
+  type?: ButtonType;
 };
 
 export default (props: Props): React.ReactElement => {
@@ -31,6 +38,9 @@ export default (props: Props): React.ReactElement => {
     onPress: onPressProp,
     children,
     activeOpacity,
+    radius,
+    disabled,
+    type = 'primary',
   } = props;
   const {theme} = useThemeContext();
   const TouchableComponent =
@@ -44,14 +54,28 @@ export default (props: Props): React.ReactElement => {
     }
   };
 
-  const borderRadius = round ? height / 2 : 15;
+  const borderRadius = round ? height / 2 : radius || 15;
+
+  const BackgroundColors: {[key in ButtonType]: string} = {
+    primary: Light.buttonPrimaryBackground,
+    secondary: '#EBF4FF',
+    disabled: '#F4F4F4',
+  };
+
+  const TextColors: {[key in ButtonType]: string} = {
+    primary: Light.buttonPrimaryBackground,
+    secondary: '#358CFE',
+    disabled: '#d4d4d5',
+  };
 
   const customStyle: StyleProp<ViewStyle & TextStyle> = {
     alignItems: 'center',
     paddingVertical: 15,
     borderRadius,
-    backgroundColor: theme.colors.primary,
+    backgroundColor: BackgroundColors[disabled ? 'disabled' : type],
   };
+
+  const textColor = TextColors[disabled ? 'disabled' : type];
 
   return (
     <View style={containerStyle}>
@@ -60,7 +84,13 @@ export default (props: Props): React.ReactElement => {
         style={{borderRadius}}
         onPress={onPress}
       >
-        <View style={[customStyle, style]}>{children}</View>
+        <View style={[customStyle, style]}>
+          {typeof children === 'string' ? (
+            <Text color={textColor}>{children}</Text>
+          ) : (
+            children
+          )}
+        </View>
       </TouchableComponent>
     </View>
   );

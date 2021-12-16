@@ -1,14 +1,7 @@
 import React from 'react';
 import {Circle, ClipPath, Defs, G, Path} from 'react-native-svg';
 
-type IconMapType = {
-  [key: string]: {
-    filled?: React.ReactChild;
-    outlined?: React.ReactChild;
-  };
-};
-
-const IconMap: IconMapType = {
+const IconMap = {
   refresh: {
     outlined: (
       <>
