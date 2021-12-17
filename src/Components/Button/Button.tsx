@@ -23,6 +23,7 @@ type Props = {
   children?: React.ReactNode;
   round?: boolean;
   highlight?: boolean;
+  activeOpacity?: number;
   radius?: number;
   disabled?: boolean;
   type?: ButtonType;
@@ -36,6 +37,7 @@ export default (props: Props): React.ReactElement => {
     style,
     onPress: onPressProp,
     children,
+    activeOpacity,
     radius,
     disabled,
     type = 'primary',
@@ -77,7 +79,11 @@ export default (props: Props): React.ReactElement => {
 
   return (
     <View style={containerStyle}>
-      <TouchableComponent style={{borderRadius}} onPress={onPress}>
+      <TouchableComponent
+        activeOpacity={activeOpacity}
+        style={{borderRadius}}
+        onPress={onPress}
+      >
         <View style={[customStyle, style]}>
           {typeof children === 'string' ? (
             <Text color={textColor}>{children}</Text>

@@ -1,2 +1,5 @@
-export * from './Certificates/MyCertificate';
-export * from './CertificateCard/CertificateCard';
+export * from './Certificates';
+export * from './CertificateCard';
+export * from './CertificateDetails';
+export * from './CertificateQR';
+export * from './CertiifcateShareList';
