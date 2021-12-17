@@ -9,7 +9,6 @@ import {
 } from './interface';
 
 import {Button, Icon, Text, View} from '~/Components';
-import {MyCertificateStack, MyCertificateStackScreenProps} from '~/Types';
 
 const IssuedCertificateItems: CertificateListItemType[] = [
   {
@@ -34,10 +33,7 @@ const NotIssuedCertificateItems: CertificateListItemType[] = [
   },
 ];
 
-type NavigationProps =
-  MyCertificateStackScreenProps[MyCertificateStack.MyCertificate];
-
-export const MyCertificate = ({navigation}: NavigationProps) => {
+export const MyCertificate = () => {
   const [notIssuedModalVisible, setNotIssuedModalVisible] = React.useState<
     VerifiableCredentialTypes | undefined
   >(undefined);
@@ -88,16 +84,12 @@ export const MyCertificate = ({navigation}: NavigationProps) => {
           }}
         >
           {IssuedCertificateItems.map(item => (
-            <CertificateItem item={item} navigation={navigation} />
+            <CertificateItem item={item} />
           ))}
         </View>
         <View style={{paddingBottom: 20, paddingHorizontal: 14}}>
           {NotIssuedCertificateItems.map(item => (
-            <CertificateItem
-              item={item}
-              navigation={navigation}
-              onPress={setNotIssuedModalVisible}
-            />
+            <CertificateItem item={item} onPress={setNotIssuedModalVisible} />
           ))}
         </View>
       </View>

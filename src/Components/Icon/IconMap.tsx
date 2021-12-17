@@ -41,13 +41,13 @@ const IconMap = {
       <>
         <Path
           d="M16 5L9 12"
-          stroke="#007AFF"
+          stroke="#797979"
           strokeLinecap="round"
           strokeWidth={1.6}
         />
         <Path
           d="M16 20L9 12"
-          stroke="#007AFF"
+          stroke="#797979"
           strokeLinecap="round"
           strokeWidth={1.6}
         />

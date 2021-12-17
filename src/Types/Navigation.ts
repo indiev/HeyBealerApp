@@ -1,6 +1,8 @@
 import {CompositeNavigationProp, RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 
+import {VerifiableCredentialTypes} from '../Screens/MyCertificate/Certificates/interface';
+
 export enum RootStack {
   Main = 'Main',
   OnboardingFirst = 'OnboardingFirst',
@@ -25,7 +27,7 @@ export type RootStackParamList = {
 export type MyCertificateParamList = {
   // [MyCertificateStack.MyCertificate]: undefined;
   [MyCertificateStack.CertificateCard]: {
-    type: string;
+    type: VerifiableCredentialTypes;
   };
 } & {
   [P in MyCertificateStack]?: {};

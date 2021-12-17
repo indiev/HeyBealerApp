@@ -1,4 +1,3 @@
-import {StackNavigationProp} from '@react-navigation/stack';
 import {useNavigation} from '@react-navigation/native';
 import {LinearGradient} from 'expo-linear-gradient';
 import React from 'react';
@@ -12,21 +11,23 @@ import {
 
 import {RightArrowIcon} from '~/Assets/Svg';
 import {Text, View} from '~/Components';
-import {MyCertificateParamList, MyCertificateStack} from '~/Types';
+import {MyCertificateStack, MyCertificateStackNavigationProps} from '~/Types';
 
 type Props = {
   item: CertificateListItemType;
   onPress?: React.Dispatch<
     React.SetStateAction<VerifiableCredentialTypes | undefined>
   >;
-  navigation: StackNavigationProp<MyCertificateParamList, 'MyCertificate'>;
 };
 
 export const CertificateItem = ({
   item,
   onPress: setNotIssuedModalVisible,
-  navigation,
 }: Props) => {
+  const navigation =
+    useNavigation<
+      MyCertificateStackNavigationProps[MyCertificateStack.MyCertificate]
+    >();
   const {type, status} = item;
 
   return (
@@ -36,7 +37,7 @@ export const CertificateItem = ({
       onPress={() => {
         if (!status && setNotIssuedModalVisible) setNotIssuedModalVisible(type);
         else
-          navigation.push(MyCertificateStack.CertificateCard, {
+          navigation.navigate(MyCertificateStack.CertificateCard, {
             type,
           });
       }}

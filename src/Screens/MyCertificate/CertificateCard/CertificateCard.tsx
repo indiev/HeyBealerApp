@@ -1,3 +1,4 @@
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {LinearGradient} from 'expo-linear-gradient';
 import React from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';
@@ -7,12 +8,19 @@ import {VerifiableCredentialInfoObj} from '../Certificates/interface';
 
 import {CoovLogo} from '~/Assets/Svg';
 import {Header, Icon, Tag, Text, View} from '~/Components';
-import {MyCertificateStack, MyCertificateStackScreenProps} from '~/Types';
+import {
+  MyCertificateRouteProps,
+  MyCertificateStack,
+  MyCertificateStackNavigationProps,
+} from '~/Types';
 
-type NavigationProps =
-  MyCertificateStackScreenProps[MyCertificateStack.CertificateCard];
-
-export const CertificateCard = ({navigation, route}: NavigationProps) => {
+export const CertificateCard = () => {
+  const navigation =
+    useNavigation<
+      MyCertificateStackNavigationProps[MyCertificateStack.CertificateCard]
+    >();
+  const route =
+    useRoute<MyCertificateRouteProps[MyCertificateStack.CertificateCard]>();
   const {type} = route.params;
   const {color, name, startColor, endColor} = VerifiableCredentialInfoObj[type];
 
@@ -40,7 +48,9 @@ export const CertificateCard = ({navigation, route}: NavigationProps) => {
             shadowColor: '#000000',
             shadowRadius: 16,
           }}
-          onPress={() => navigation.push(MyCertificateStack.CertificateQR, {})}
+          onPress={() =>
+            navigation.navigate(MyCertificateStack.CertificateQR, {})
+          }
         >
           <View
             style={{

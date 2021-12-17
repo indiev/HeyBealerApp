@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
 
@@ -10,6 +11,8 @@ type Props = {
 };
 
 export default (props: Props) => {
+  const navigation = useNavigation();
+
   const {right, back, title} = props;
   return (
     <View safe>
@@ -23,7 +26,10 @@ export default (props: Props) => {
       >
         {back && (
           <View style={{alignItems: 'flex-start'}} fill>
-            <TouchableOpacity activeOpacity={0.8}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => navigation.goBack()}
+            >
               <Icon name="back" />
             </TouchableOpacity>
           </View>

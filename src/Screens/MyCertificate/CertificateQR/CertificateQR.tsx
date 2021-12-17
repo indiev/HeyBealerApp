@@ -1,17 +1,19 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Dimensions, TouchableOpacity} from 'react-native';
 import QR from 'react-native-qrcode-svg';
 
 import {Header, Icon, Text, View} from '~/Components';
 import Tag, {TagTypes} from '~/Components/Tag/Tag';
-import {MyCertificateStack, MyCertificateStackScreenProps} from '~/Types';
+import {MyCertificateStack, MyCertificateStackNavigationProps} from '~/Types';
 
 const {width: WIDTH} = Dimensions.get('window');
 
-type NavigationProps =
-  MyCertificateStackScreenProps[MyCertificateStack.CertificateQR];
-
-export const CertificateQR = ({navigation}: NavigationProps) => {
+export const CertificateQR = () => {
+  const navigation =
+    useNavigation<
+      MyCertificateStackNavigationProps[MyCertificateStack.CertificateQR]
+    >();
   const tagStyle = {
     marginHorizontal: 3,
     marginBottom: 5,
@@ -25,7 +27,7 @@ export const CertificateQR = ({navigation}: NavigationProps) => {
           <TouchableOpacity
             activeOpacity={0.8}
             onPress={() =>
-              navigation.push(MyCertificateStack.CertificateDetails, {})
+              navigation.navigate(MyCertificateStack.CertificateDetails, {})
             }
           >
             <Text color="#007AFF" medium xSmall>
