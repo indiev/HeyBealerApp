@@ -56,15 +56,15 @@ export default (props: Props): React.ReactElement => {
 
   const borderRadius = round ? height / 2 : radius || 15;
 
-  const BackgroundColors: {[key in ButtonType]: string} = {
-    primary: Light.buttonPrimaryBackground,
-    secondary: '#EBF4FF',
+  const BackgroundColors: {[key in ButtonType]: string | undefined} = {
+    primary: theme.colors.primary,
+    secondary: undefined,
     disabled: '#F4F4F4',
   };
 
   const TextColors: {[key in ButtonType]: string} = {
-    primary: Light.buttonPrimaryBackground,
-    secondary: '#358CFE',
+    primary: 'white',
+    secondary: 'gray',
     disabled: '#d4d4d5',
   };
 
@@ -86,7 +86,9 @@ export default (props: Props): React.ReactElement => {
       >
         <View style={[customStyle, style]}>
           {typeof children === 'string' ? (
-            <Text color={textColor}>{children}</Text>
+            <Text color={textColor} small>
+              {children}
+            </Text>
           ) : (
             children
           )}

@@ -64,7 +64,7 @@ const Size = {
     letterSpacing: 0,
   },
   [FontSize.xLarge]: {
-    fontSize: 34,
+    fontSize: 32,
     lineHeight: 34 * 1.235,
     letterSpacing: 0.25,
   },

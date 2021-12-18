@@ -5,3 +5,8 @@ export * from './Svg';
 export * from './Icon';
 export * from './Header';
 export * from './Tag';
+export * from './Input';
+export * from './Portal';
+export * from './Drawer';
+export * from './Indicator';
+export * from './Lottie';

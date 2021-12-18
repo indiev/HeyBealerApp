@@ -16,7 +16,7 @@ export type Props = React.ComponentProps<typeof View> &
   React.ComponentProps<typeof KeyboardAvoidingView> & {
     children?: React.ReactNode;
     row?: boolean;
-    fill?: boolean;
+    fill?: boolean | number;
     // view type
     safe?: boolean;
     scroll?: boolean;
@@ -41,16 +41,16 @@ export default (props: Props): React.ReactElement => {
   } = props;
   const style: ViewStyle = {
     flexDirection: row ? 'row' : 'column',
-    flex: fill ? 1 : 0,
+    flex: typeof fill === 'number' ? fill : (fill && 1) || 0,
   };
 
   const Component = (safe && SafeAreaView) || (scroll && ScrollView) || View;
 
   const ref = React.useRef<SafeAreaView | ScrollView | View>(null);
 
-  if (typeof Component === typeof ScrollView) {
-    useScrollToTop(ref as RefObject<ScrollView>);
-  }
+  // if (typeof Component === typeof ScrollView) {
+  //   useScrollToTop(ref as RefObject<ScrollView>);
+  // }
 
   const componentProps: Props = {
     style: [style, customStyle],

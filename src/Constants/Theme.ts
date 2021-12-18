@@ -21,7 +21,7 @@ export const colors = {
 };
 
 export const Light: ThemeColor = {
-  primary: '#0036AF',
+  primary: '#007AFF',
   background: colors.lightBackground,
   card: 'white',
   text: 'black',

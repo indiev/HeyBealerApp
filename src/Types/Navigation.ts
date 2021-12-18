@@ -7,6 +7,21 @@ export enum RootStack {
   Main = 'Main',
   OnboardingFirst = 'OnboardingFirst',
   PinScreen = 'PinScreen',
+  AuctionRegister = 'AuctionRegister',
+  AuctionDetail = 'AuctionDetail',
+  HomeMain = 'HomeMain',
+  // lawyer
+  LawyerMain = 'LawyerMain',
+  LawyerList = 'LawyerList',
+  LawyerGuide = 'LawyerGuide',
+  LawyerTransfer = 'LawyerTransfer',
+  LawyerTransferLoading = 'LawyerTransferLoading',
+  LawyerTransferSuccess = 'LawyerTransferSuccess',
+  LawyerDetail = 'LawyerDetail',
+  // invest
+  InvestMain = 'InvestMain',
+  InvestToken = 'InvestToken',
+  InvestList = 'InvestList',
 }
 
 export enum MyCertificateStack {

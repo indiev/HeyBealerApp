@@ -13,6 +13,7 @@ module.exports = {
   plugins: ['import', 'react', 'flowtype', '@typescript-eslint', 'prettier'],
   parser: '@typescript-eslint/parser',
   rules: {
+    'global-require': 'off',
     'no-shadow': 'off',
     'no-plusplus': 'off',
     'func-names': 'off',

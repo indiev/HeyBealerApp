@@ -103,9 +103,8 @@ export default (): React.ReactElement | null => {
       }}
     >
       <Stack.Navigator
-        initialRouteName={RootStack.OnboardingFirst}
+        initialRouteName={RootStack.AuctionRegister}
         screenOptions={{headerShown: false}}
-        // screenOptions={}
       >
         {Object.entries(RootScreens).map(([name, component]) => (
           <Stack.Screen
