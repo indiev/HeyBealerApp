@@ -8,6 +8,8 @@ import RootNavigator from '~/Navigation/RootNavigator';
 
 export default () => {
   const [loaded] = useFonts({
+    RobotoMonoRegular: require('./src/Assets/Fonts/Roboto-Mono/Roboto-Regular.ttf'),
+    RobotoMonoBlack: require('./src/Assets/Fonts/Roboto-Mono/Roboto-Black.ttf'),
     NanumGothicCoding: require('./src/Assets/Fonts/NanumGothicCoding-Regular.ttf'),
 
     'NanumGothicCoding-Bold': {
