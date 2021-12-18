@@ -2,7 +2,9 @@ import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
 
-import {Icon, Text, View} from '~/Components';
+import Icon from '../Icon/Icon';
+import Text from '../Text/Text';
+import View from '../View/View';
 
 type Props = {
   title?: string;

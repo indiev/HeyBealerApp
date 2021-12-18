@@ -1,7 +1,8 @@
 import React from 'react';
 import {ViewStyle} from 'react-native';
 
-import {Text, View} from '..';
+import Text from '../Text/Text';
+import View from '../View/View';
 
 export enum TagTypes {
   Success = 'Success',
